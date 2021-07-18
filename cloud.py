@@ -14,7 +14,6 @@ def create_cloud(sightitem):
     for tag in tags:
         freq_dict[tag[0]] = tag[1]
 
-    # 先安装思源黑体
     wc = wordcloud.WordCloud(width=1000, font_path="./assets/SourceHanSansCN-Normal.ttf", height=700)
     wc.generate_from_frequencies(freq_dict)
     filename = sightitem['id'] + '.png'
