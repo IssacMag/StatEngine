@@ -18,7 +18,6 @@ def to_month(item):
         item['baidu_media_index'] = series.to_frame()
 
 
-
 def cal_ranking(sight_list):
     index_list = []
     for item in sight_list:
