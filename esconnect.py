@@ -4,7 +4,7 @@ import pandas
 def get_list():
     es = Elasticsearch()
     body = {
-        "_source": ["id", "sight", "desc"],
+        "_source": ["id", "sight", "comment"],
         "query": {
             "match_all": {}
         }
@@ -20,7 +20,7 @@ def get_list():
             'baidu_search_index': [],
             'baidu_news_index': [],
             'baidu_media_index': [],
-            'comment': resultitem['_source']['desc'],
+            'comment': resultitem['_source']['comment'],
             'wordcloud_path': ''
         }
         newlist.append(index)
@@ -34,9 +34,9 @@ def save_list(sightlist):
         body = {
             'id': item['id'],
             'sight': item['sight'],
-            'baidu_search_index': item['baidu_search_index'].to_dict(),
-            'baidu_news_index': item['baidu_news_index'].to_dict(),
-            'baidu_media_index': item['baidu_media_index'].to_dict(),
+            'baidu_search_index': item['baidu_search_index'],
+            'baidu_news_index': item['baidu_news_index'],
+            'baidu_media_index': item['baidu_media_index'],
             'wordcloud_path': item['wordcloud_path']
         }
         res = es.index(index='qunar_stat', body=body)
