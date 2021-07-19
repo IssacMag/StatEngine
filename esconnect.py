@@ -1,6 +1,7 @@
 from elasticsearch import Elasticsearch
 import pandas
 
+
 def get_list():
     es = Elasticsearch()
     body = {
@@ -41,3 +42,4 @@ def save_list(sightlist):
         }
         res = es.index(index='qunar_stat', body=body)
         print(res)
+
