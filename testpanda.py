@@ -19,6 +19,6 @@ end_date = '2021-06-30'
 # ndf = df.fillna(0).groupby(pd.Grouper(freq='M'))['西湖'].sum()
 
 index_df = gp.baidu_atlas_index(word="口罩", date='2020-10-10', cookie=cookie)
-print(index_df.to_dict())
+print(index_df)
 
 

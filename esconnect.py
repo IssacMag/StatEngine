@@ -48,6 +48,6 @@ def save_list(sightlist):
             'interest_index': item['interest_index'],
             'wordcloud_path': item['wordcloud_path']
         }
-        res = es.index(index='qunar_stat', body=body)
+        res = es.index(index='qunar_stat', id=item['id'], body=body)
         print(res)
 
