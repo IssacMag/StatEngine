@@ -11,15 +11,14 @@ cookie = 'BIDUPSID=FE2028866C4AF9822E6D7B2D80A7B199; PSTM=1626603529; BD_UPN=123
 start_date = '2021-05-01'
 end_date = '2021-06-30'
 
-df = gp.baidu_search_index(word='西湖', start_date=start_date, end_date=end_date, cookie=cookie)
-
-# df2 = gp.baidu_search_index(word='武当山', start_date=start_date, end_date=end_date, cookie=cookie)
+# df = gp.baidu_search_index(word='西湖', start_date=start_date, end_date=end_date, cookie=cookie)
 
 # 见了鬼了 怎么没有数据的
 # print(df.groupby([df.index.year, df.index.month], dropna=True, sort=False, axis=0).mean())
 
 # ndf = df.fillna(0).groupby(pd.Grouper(freq='M'))['西湖'].sum()
 
+index_df = gp.baidu_atlas_index(word="口罩", date='2020-10-10', cookie=cookie)
+print(index_df.to_dict())
 
-print(df)
 

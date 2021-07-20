@@ -21,6 +21,10 @@ def get_list():
             'baidu_search_index': [],
             'baidu_news_index': [],
             'baidu_media_index': [],
+            'age_index': [],
+            'gender_index': [],
+            'atlas_index': [],
+            'interest_index': [],
             'comment': resultitem['_source']['comment'],
             'wordcloud_path': ''
         }
@@ -38,6 +42,10 @@ def save_list(sightlist):
             'baidu_search_index': item['baidu_search_index'],
             'baidu_news_index': item['baidu_news_index'],
             'baidu_media_index': item['baidu_media_index'],
+            'atlas_index': item['atlas_index'],
+            'age_index': item['age_index'],
+            'gender_index': item['gender_index'],
+            'interest_index': item['interest_index'],
             'wordcloud_path': item['wordcloud_path']
         }
         res = es.index(index='qunar_stat', body=body)

@@ -7,7 +7,7 @@ start_date = '2021-07-10'
 end_date = '2021-07-15'
 
 # 全年
-# end_date = datetime.datetime.today() + datetime.timedelta()
+# end_date = datetime.datetime.today() + datetime.timedelta(days=-2)
 # start_date = end_date + datetime.timedelta(days=-365)
 
 
@@ -38,12 +38,55 @@ def get_media_index(sightlist):
             cookie=cookie)
 
 
+def get_atlas_index(sightlist):
+    for item in sightlist:
+        item['atlas_index'] = gp.baidu_atlas_index(
+            word=item['sight'],
+            date=end_date,
+            cookie=cookie
+        )
+        if item['atlas_index'] is not None:
+            item['atlas_index'] = item['atlas_index'].to_dict()
+
+
+def get_age_index(sightlist):
+    for item in sightlist:
+        item['age_index'] = gp.baidu_age_index(
+            word=item['sight'],
+            cookie=cookie
+        )
+        if item['age_index'] is not None:
+            item['age_index'] = item['age_index'].to_dict()
+
+
+def get_gender_index(sightlist):
+    for item in sightlist:
+        item['gender_index'] = gp.baidu_gender_index(
+            word=item['sight'],
+            cookie=cookie
+        )
+        if item['gender_index'] is not None:
+            item['gender_index'] = item['gender_index'].to_dict()
+
+
+def get_interest_index(sightlist):
+    for item in sightlist:
+        item['interest_index'] = gp.baidu_interest_index(
+            word=item['sight'],
+            cookie=cookie
+        )
+        if item['interest_index'] is not None:
+            item['interest_index'] = item['interest_index'].to_dict()
+
+
 def get_all_index(sightlist):
     get_search_index(sightlist)
-    # get_media_index(sightlist)
-    # get_news_index(sightlist)
+    get_media_index(sightlist)
+    get_news_index(sightlist)
+    get_age_index(sightlist)
+    get_atlas_index(sightlist)
+    get_interest_index(sightlist)
     for item in sightlist:
         processindex.to_month(item)
-        print(item['baidu_search_index'])
     # processindex.cal_ranking(sightlist)
 
