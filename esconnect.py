@@ -46,7 +46,8 @@ def save_list(sightlist):
             'age_index': item['age_index'],
             'gender_index': item['gender_index'],
             'interest_index': item['interest_index'],
-            'wordcloud_path': item['wordcloud_path']
+            'wordcloud_path': item['wordcloud_path'],
+            'rank': item['rank']
         }
         res = es.index(index='qunar_stat', id=item['id'], body=body)
         print(res)
