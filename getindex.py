@@ -83,6 +83,7 @@ def get_all_index(sightlist):
     get_media_index(sightlist)
     get_news_index(sightlist)
     get_age_index(sightlist)
+    get_gender_index(sightlist)
     get_atlas_index(sightlist)
     get_interest_index(sightlist)
 
