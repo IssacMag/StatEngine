@@ -8,14 +8,14 @@ def to_month(item):
         series = \
             item['baidu_search_index'].fillna(0).groupby(pd.Grouper(freq='M'))[item['sight']].sum()
         item['baidu_search_index'] = series.to_frame()[item['sight']].tolist()
-    # if item['baidu_news_index'] is not None:
-    #     series = \
-    #         item['baidu_news_index'].fillna(0).groupby(pd.Grouper(freq='M'))[item['sight']].sum()
-    #     item['baidu_news_index'] = series.to_frame()[item['sight']].tolist()
-    # if item['baidu_media_index'] is not None:
-    #     series = \
-    #         item['baidu_media_index'].fillna(0).groupby(pd.Grouper(freq='M'))[item['sight']].sum()
-    #     item['baidu_media_index'] = series.to_frame()[item['sight']].tolist()
+    if item['baidu_news_index'] is not None:
+        series = \
+            item['baidu_news_index'].fillna(0).groupby(pd.Grouper(freq='M'))[item['sight']].sum()
+        item['baidu_news_index'] = series.to_frame()[item['sight']].tolist()
+    if item['baidu_media_index'] is not None:
+        series = \
+            item['baidu_media_index'].fillna(0).groupby(pd.Grouper(freq='M'))[item['sight']].sum()
+        item['baidu_media_index'] = series.to_frame()[item['sight']].tolist()
 
 
 def cal_ranking(sight_list):

@@ -6,6 +6,7 @@ import jieba.analyse
 import wordcloud
 import matplotlib.pyplot as plt
 
+
 def create_cloud(sightitem):
     washed = re.sub('[^\u4e00-\u9fa5]+', ' ', sightitem['comment'])
 
@@ -18,6 +19,7 @@ def create_cloud(sightitem):
         width=1000,
         height=700,
         font_path="./assets/SourceHanSansCN-Normal.ttf",
+        background_color=None,
         colormap=plt.get_cmap('YlGnBu'))
     wc.generate_from_frequencies(freq_dict)
     filename = sightitem['id'] + '.png'
