@@ -85,7 +85,9 @@ def get_all_index(sightlist):
     get_age_index(sightlist)
     get_atlas_index(sightlist)
     get_interest_index(sightlist)
+
     for item in sightlist:
         processindex.to_month(item)
-    # processindex.cal_ranking(sightlist)
+
+    processindex.cal_ranking(sightlist)
 

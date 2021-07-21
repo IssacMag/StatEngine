@@ -18,10 +18,16 @@ def to_month(item):
         item['baidu_media_index'] = series.to_frame()[item['sight']].tolist()
 
 
+# “高于xx%的景点”
 def cal_ranking(sight_list):
+    total_sight = len(sight_list)  # 景点总数
     index_list = []
     for item in sight_list:
-        index_list.append(item['baidu_search_index'])
-
-    df = pd.concat(index_list, axis=1)
-    print(df.index)
+        if len(item['baidu_search_index']):
+            index_list.append(item['baidu_search_index'][-1])  # 取出最近一个月的index用于排序
+        else:
+            index_list.append(0)
+    rankings = [sorted(index_list).index(x)+1 for x in index_list]  # 排序列表 从1开始
+    for item in sight_list:
+        index = sight_list.index(item)
+        item['rank'] = 1 - rankings[index]/total_sight
