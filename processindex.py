@@ -23,7 +23,7 @@ def cal_ranking(sight_list):
     total_sight = len(sight_list)  # 景点总数
     index_list = []
     for item in sight_list:
-        if len(item['baidu_search_index']):
+        if item['baidu_search_index'] is not None:
             index_list.append(item['baidu_search_index'][-1])  # 取出最近一个月的index用于排序
         else:
             index_list.append(0)

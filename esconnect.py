@@ -26,7 +26,8 @@ def get_list():
             'atlas_index': [],
             'interest_index': [],
             'comment': resultitem['_source']['comment'],
-            'wordcloud_path': ''
+            'wordcloud_path': '',
+            'rank': 0
         }
         newlist.append(index)
 
