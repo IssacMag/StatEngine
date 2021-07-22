@@ -23,11 +23,11 @@ def create_cloud(sightitem):
         width=1000,
         height=700,
         font_path="./assets/SourceHanSansCN-Normal.ttf",
-        background_color=None,
+        background_color='white',
         stopwords=exclude,
         colormap=plt.get_cmap('YlGnBu'))
     wc.generate_from_frequencies(freq_dict)
     filename = sightitem['id'] + '.png'
-    cloud_path = path.join(os.getcwd(), 'clouds', filename)
+    cloud_path = path.join('clouds', filename)
     wc.to_file(cloud_path)
     sightitem['wordcloud_path'] = cloud_path
