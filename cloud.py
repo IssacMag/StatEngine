@@ -6,6 +6,10 @@ import jieba.analyse
 import wordcloud
 import matplotlib.pyplot as plt
 
+exclude = {
+    '岛', '的', '就', '和', '是', '在', '也', '了', '有', '比如', '的话', '像', '主要', '这里', '还是', '平方', '公里', '导游'
+}
+
 
 def create_cloud(sightitem):
     washed = re.sub('[^\u4e00-\u9fa5]+', ' ', sightitem['comment'])
@@ -20,6 +24,7 @@ def create_cloud(sightitem):
         height=700,
         font_path="./assets/SourceHanSansCN-Normal.ttf",
         background_color=None,
+        stopwords=exclude,
         colormap=plt.get_cmap('YlGnBu'))
     wc.generate_from_frequencies(freq_dict)
     filename = sightitem['id'] + '.png'
